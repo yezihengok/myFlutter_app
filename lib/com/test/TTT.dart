@@ -1,6 +1,5 @@
 import 'package:myflutter_app/com/test/TTT.dart';
 
-
  main() {
   //Final 和 Const
 /*使用过程中从来不会被修改的变量， 可以使用 final 或 const, 而不是 var 或者其他类型， Final 变量的值只能被设置一次；
@@ -16,6 +15,7 @@ Const 变量在编译时就已经固定 (Const 变量 是隐式 Final 的类型.
   var s2 = "as well.";
 
   test();
+   test1();
 }
 
 
@@ -73,9 +73,9 @@ String say(String from, String msg, [String device]) {
 }
 
 //在定义方法的时候，可以使用 = 来定义可选参数的默认值
-void enableFlags({bool bold = false, bool hidden = false}) {//.bold.}
+void enableFlags({bool bold = false, bool hidden = false}) {
 
-
+}
   //list 或 map 可以作为默认值传递。 如下 并分别指定参数 list 和 gifts 的默认值。
   void doit(
       {List<int> list = const [1, 2, 3],
@@ -91,26 +91,10 @@ void enableFlags({bool bold = false, bool hidden = false}) {//.bold.}
 
 
 
-  ///多数函数是有名字的， 比如 main()  也可以创建没有名字的函数，这种函数被称为 匿名函数，
-  // 有时候也被称为 lambda 或者 closure 。 匿名函数可以被复制到一个变量中
-  //下面例子 定义了一个包含一个无类型参数 item 的匿名函数
-  var list = ['apples', 'bananas', 'oranges'];
-  list.forEach((item) {
-    print('${list.indexOf(item)}: $item');
-  });
-
-  //函数只有一条语句，=> 可简写:
-  list.forEach(
-          (item) => print('${list.indexOf(item)}: $item') );
-
 //condition ? expr1 : expr2
 /*  如果条件为 true, 执行 expr1 (并返回它的值)： 否则, 执行并返回 expr2 的值。
   expr1 ?? expr2
   如果 expr1 是 non-null， 返回 expr1 的值； 否则, 执行并返回 expr2 的值。*/
-
-
-//
-
   String playerName(String name) => name ?? 'Guest';
 //上面写法等于下面效果
   String playerNames(String name) {
@@ -121,16 +105,36 @@ void enableFlags({bool bold = false, bool hidden = false}) {//.bold.}
     }
   }
 
-  var collection = [0, 1, 2];
-  for (var x in collection) {
-    print(x); // 0 1 2
+
+  void test1(){
+
+
+    ///多数函数是有名字的， 比如 main()  也可以创建没有名字的函数，这种函数被称为 匿名函数，
+// 有时候也被称为 lambda 或者 closure 。 匿名函数可以被复制到一个变量中
+//下面例子 定义了一个包含一个无类型参数 item 的匿名函数
+    var list = ['apples', 'bananas', 'oranges'];
+    list.forEach((item) {
+      print('${list.indexOf(item)}: $item');
+    });
+
+//函数只有一条语句，=> 可简写:
+    list.forEach(
+            (item) => print('${list.indexOf(item)}: $item') );
+
+
+    var collection = [0, 1, 2];
+    for (var x in collection) {
+      print(x); // 0 1 2
+    }
+
+    var callbacks = [];
+    for (var i = 0; i < 2; i++) {
+      callbacks.add(() => print(i));
+    }
+    // ignore: expected_token
+    callbacks.forEach((c) => c());
   }
 
-  var callbacks = [];
-  for (var i = 0; i < 2; i++) {
-    callbacks.add(() => print(i));
-  }
-  // ignore: expected_token
-  callbacks.forEach((c) => c());
+
 
 
