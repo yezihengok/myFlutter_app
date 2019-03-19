@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 //void main() => runApp(MyAppBar());
 void main() {
   runApp(new MaterialApp(
@@ -10,7 +8,6 @@ void main() {
   ));
 
   //runApp(new MyAppContnet());
-
 }
 
 class MyAppContnet extends StatelessWidget {
@@ -20,34 +17,49 @@ class MyAppContnet extends StatelessWidget {
 
   final Widget title;
 
+/*  // 资源图片
+  new Image.asset('imgs/logo.jpeg'),
+  //网络图片
+  new Image.network(
+  'https://flutter.io/images/homepage/header-illustration.png'),
+  // 本地文件图片
+  new Image.file(new File("/Users/gs/Downloads/1.jpeg")),
+  // Uint8List图片
+  new Image.memory(bytes),
+  //使用ImageProvider加载图片
+  new Image(image: new NetworkImage(
+  "https://flutter.io/images/homepage/screenshot-2.png"),
+  ---------------------
+  原文：https://blog.csdn.net/poorkick/article/details/80458707 */
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      height: 56.0, // 单位是逻辑上的像素（并非真实的像素，类似于浏览器中的像素）
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      decoration: new BoxDecoration(color: Colors.blue[500]),
-
-      // Row 是水平方向的线性布局（linear layout）
-      child: new Row(
-        //列表项的类型是 <Widget>
+    // TODO: implement build
+    return new Scaffold(
+      body: new ListView(
         children: <Widget>[
           new IconButton(
-            icon: new Icon(Icons.menu),
+            icon: new Icon(Icons.access_alarm),
             tooltip: 'Navigation menu',
             onPressed: null, // null 会禁用 button
           ),
-          // Expanded expands its child to fill the available space.（填充空间 ，类似于权重weight）
-          new Expanded(
-            child: title,
-
-          ),
+          new Image.asset('images/img1.png', width: 65, height: 65),
           new IconButton(
-            icon: Image(image: AssetImage('images/icon_mine_user.png'),width:40,height:40),
+            icon: Image(
+                image: AssetImage('images/icon_mine_user.png'),
+                width: 50,
+                height: 50),
             tooltip: 'Search',
-            onPressed: null,
+            onPressed: () {
+              print("d点击了");
+            },
           ),
-
-
+         // new Image.network('http://img4.imgtn.bdimg.com/it/u=2808542219,3839699430&fm=214&gp=0.jpg'),
+          new Image(
+              image: new NetworkImage(
+                  "https://flutter.io/images/homepage/screenshot-2.png")),
+          new Image.network(
+            'https://github.com/flutter/plugins/raw/master/packages/video_player/doc/demo_ipod.gif?raw=true',
+          ),
         ],
       ),
     );

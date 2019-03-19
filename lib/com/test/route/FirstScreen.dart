@@ -65,8 +65,9 @@ class _MyFirstpageState extends State<Firstpage>{
 
     final result = await Navigator.push(context,
       new MaterialPageRoute(builder: (context) => new SecondScreen(msg: "需要呵呵哒吗？")),);
-    Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("返回的值=$result")));
+   // Scaffold.of(context).showSnackBar(new SnackBar(content: new Text("返回的值=$result")));
     print("返回的值==========$result");
+
   //  setState方法的作用是通知Flutter框架，有状态发生了改变，Flutter框架收到通知后，会执行build方法来根据新的状态重新构建界面
     setState(() {
       title=result;
