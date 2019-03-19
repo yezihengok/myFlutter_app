@@ -11,7 +11,6 @@ class MyTestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final wordPair = new WordPair.random();
-
     return new MaterialApp(
       title: 'Welcome to Flutter',
       home: new Scaffold(

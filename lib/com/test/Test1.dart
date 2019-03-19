@@ -32,7 +32,7 @@ class MyAppBar extends StatelessWidget {
             tooltip: 'Navigation menu',
             onPressed: null, // null 会禁用 button
           ),
-          // Expanded expands its child to fill the available space.（填充空间）
+          // Expanded expands its child to fill the available space.（填充空间 ，类似于权重weight）
           new Expanded(
             child: title,
           ),

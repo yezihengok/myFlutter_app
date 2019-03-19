@@ -30,12 +30,12 @@ void test(){
 //     constantList[1] = 1; // 取消注释会引起错误。(编译不会出错，运行时报错)
 
   //在 Dart 中 Set 是一个元素唯一且无需的集合。 Dart 为 Set 提供了 Set 字面量和 Set 类型。
-  var halogens = {'aaa', 'bbb', 'ccc', 'ddd'};//Dart 推断 halogens 类型为 Set<String> 。
+  var halogens = {'fluorine','chlorine', 'bromine', 'iodine', 'astatine'};//Dart 推断 halogens 类型为 Set<String> 。
 
   //要创建一个空集，使用前面带有类型参数的 {}
-  var names = <String>{};
-// Set<String> names = {}; // 这样也是可以的。
-// var names = {}; // 这样会创建一个 Map ，而不是 Set 。
+  //var names = <String>{};
+ Set<String> nam = {}; // 这样也是可以的。
+ //var aaas = {}; // 这样会创建一个 Map ，而不是 Set 。
 
   //使用 Map 字面量的简单例子：
   var gifts = {
