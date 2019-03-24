@@ -33,6 +33,7 @@ class MyRowContnet extends StatelessWidget {
             children: <Widget>[
 
           Container(
+            height: 200.0,
               color: Colors.yellowAccent[400],
               child: Column(
                 mainAxisSize: MainAxisSize.max,//无效，内层Colum高度为实际高度
@@ -44,7 +45,7 @@ class MyRowContnet extends StatelessWidget {
               ),
 
           ///如果要让里面的Colum占满外部Colum，可以使用Expanded widget：
-         /* Expanded(
+    /*      Expanded(
             child: Container(
               color: Colors.red,
               child: Column(
