@@ -8,7 +8,6 @@ void main() {
 }
 //ConstrainedBox和SizedBox都是通过RenderConstrainedBox来渲染的。SizedBox只是ConstrainedBox一个定制
 
-
 class MyContnet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
