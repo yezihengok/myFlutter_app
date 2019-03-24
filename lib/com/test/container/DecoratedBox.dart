@@ -6,6 +6,7 @@ void main() {
   ));
 }
 
+
 ///DecoratedBox可以在其子widget绘制前(或后)绘制一个装饰Decoration（如背景、边框、渐变等）。
 ///属性：
 /*  BoxDecoration({
