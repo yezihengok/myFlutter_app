@@ -7,7 +7,6 @@ void main() {
   ));
 }
 
-
 class MyContnet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -45,81 +44,63 @@ inputFormatters：用于指定输入格式；当用户输入内容改变时，�
 enable：如果为false，则输入框会被禁用，禁用状态不接收输入和事件，同时显示禁用态样式（在其decoration中定义）。
 cursorWidth、cursorRadius和cursorColor：这三个属性是用于自定义输入框光标宽度、圆角和颜色的*/
 
-
-Widget _addContent(){
+Widget _addContent() {
   //定义一个controller 通过controller可获得 文本   print(_nameController.text);
-  TextEditingController _nameController=new TextEditingController();
-  TextEditingController _pwdController=new TextEditingController();
+  TextEditingController _nameController = new TextEditingController();
+  TextEditingController _pwdController = new TextEditingController();
 
   //controller 可设置一些默认值
-  _nameController.text="我是默认的值";
+  _nameController.text = "我是默认的值";
   //设置默认值，并从第4个字符开始选中后面的字符
-  _nameController.selection=TextSelection(
-      baseOffset: 3,
-      extentOffset: _nameController.text.length
-  );
-
+  _nameController.selection =
+      TextSelection(baseOffset: 3, extentOffset: _nameController.text.length);
 
   //通过controller也可监听 文本变化
-  _pwdController.addListener((){
+  _pwdController.addListener(() {
     print(_pwdController.text);
   });
 
   return new ListView(
-      children: <Widget>[
-        Column(
-          children: <Widget>[
-
-            TextField(
+    children: <Widget>[
+      Column(
+        children: <Widget>[
+          TextField(
               controller: _nameController, //设置controller
               autofocus: true,
               decoration: InputDecoration(
                   labelText: "用户名",
                   hintText: "用户名或邮箱",
-                  prefixIcon: Icon(Icons.person)
-              ),
+                  prefixIcon: Icon(Icons.person)),
 
-                //监听文本变化可用onChanged 也可用controller监听
-                onChanged: (v) {
-                  print("onChange: $v");
-                }
-
-            ),
-
-
-            TextField(
-              controller: _pwdController, //设置controller
-              decoration: InputDecoration(
-                  labelText: "密码",
-                  hintText: "您的登录密码",
-                  prefixIcon: Icon(Icons.lock)
-              ),
-              obscureText: true,
-            ),
-
-            Padding(
-              padding: EdgeInsets.all(20.0),
-            ),
-
-            new FocusTest(),
-
-            Padding(
-              padding: EdgeInsets.all(20.0),
-            ),
-
-            new FocusTest1(),
-
-          ],
-        ),
-
-
-      ],
+              //监听文本变化可用onChanged 也可用controller监听
+              onChanged: (v) {
+                print("onChange: $v");
+              }),
+          TextField(
+            controller: _pwdController, //设置controller
+            decoration: InputDecoration(
+                labelText: "密码",
+                hintText: "您的登录密码",
+                prefixIcon: Icon(Icons.lock)),
+            obscureText: true,
+          ),
+          Padding(
+            padding: EdgeInsets.all(20.0),
+          ),
+          new FocusTest(),
+          Padding(
+            padding: EdgeInsets.all(20.0),
+          ),
+          new FocusTest1(),
+          Padding(
+            padding: EdgeInsets.all(20.0),
+          ),
+          new FormTest(),
+        ],
+      ),
+    ],
   );
-
 }
-
-
-
 
 ///控制焦点
 ///焦点可以通过FocusNode和FocusScopeNode来控制，默认情况下，焦点由FocusScope来管理，它代表焦点控制范围，
@@ -137,11 +118,9 @@ class _FocusTestState extends State<FocusTest> {
 
   @override
   Widget build(BuildContext context) {
-
-
     //监听焦点状态改变事件
-    focusNode1.addListener((){
-      print("输入框1焦点:"+focusNode1.hasFocus.toString());
+    focusNode1.addListener(() {
+      print("输入框1焦点:" + focusNode1.hasFocus.toString());
     });
 
     return Padding(
@@ -150,52 +129,47 @@ class _FocusTestState extends State<FocusTest> {
         children: <Widget>[
           TextField(
             autofocus: true,
-            focusNode: focusNode1,//关联focusNode1
-            decoration: InputDecoration(
-                labelText: "输入框1"
-            ),
+            focusNode: focusNode1, //关联focusNode1
+            decoration: InputDecoration(labelText: "输入框1"),
           ),
           TextField(
-            focusNode: focusNode2,//关联focusNode2
-            decoration: InputDecoration(
-                labelText: "输入框2"
-            ),
+            focusNode: focusNode2, //关联focusNode2
+            decoration: InputDecoration(labelText: "输入框2"),
           ),
-          Builder(builder: (ctx) {
-            return Column(
-              children: <Widget>[
-                RaisedButton(
-                  child: Text("移动焦点"),
-                  onPressed: () {
-                    //将焦点从第一个TextField移到第二个TextField
-                    // 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
+          Builder(
+            builder: (ctx) {
+              return Column(
+                children: <Widget>[
+                  RaisedButton(
+                    child: Text("移动焦点"),
+                    onPressed: () {
+                      //将焦点从第一个TextField移到第二个TextField
+                      // 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
 
-                    // 第二种写法
-                    if(null == focusScopeNode){
-                      focusScopeNode = FocusScope.of(context);
-                    }
-                    focusScopeNode.requestFocus(focusNode2);
-                  },
-                ),
-                RaisedButton(
-                  child: Text("隐藏键盘"),
-                  onPressed: () {
-                    // 当所有编辑框都失去焦点时键盘就会收起
-                    focusNode1.unfocus();
-                    focusNode2.unfocus();
-                  },
-                ),
-              ],
-            );
-          },
+                      // 第二种写法
+                      if (null == focusScopeNode) {
+                        focusScopeNode = FocusScope.of(context);
+                      }
+                      focusScopeNode.requestFocus(focusNode2);
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text("隐藏键盘"),
+                    onPressed: () {
+                      // 当所有编辑框都失去焦点时键盘就会收起
+                      focusNode1.unfocus();
+                      focusNode2.unfocus();
+                    },
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
     );
   }
-
 }
-
 
 ///自定义样式
 ///由于TextField在绘制下划线时使用的颜色是主题色里面的hintColor，但提示文本颜色也是用的hintColor，
@@ -207,42 +181,34 @@ class FocusTest1 extends StatefulWidget {
 }
 
 class _FocusTestState1 extends State<FocusTest1> {
-
-
   @override
   Widget build(BuildContext context) {
-
-
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Theme(
           data: Theme.of(context).copyWith(
               hintColor: Colors.grey[200], //定义下划线颜色
               inputDecorationTheme: InputDecorationTheme(
-                  labelStyle: TextStyle(color: Colors.grey),//定义label字体样式
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 14.0)//定义提示文本样式
-              )
-          ),
+                  labelStyle: TextStyle(color: Colors.grey), //定义label字体样式
+                  hintStyle:
+                      TextStyle(color: Colors.grey, fontSize: 14.0) //定义提示文本样式
+                  )),
           child: Column(
             children: <Widget>[
               TextField(
                 decoration: InputDecoration(
-                   // labelText: "用户名",
+                    // labelText: "用户名",
                     hintText: "用户名或邮箱",
-                    prefixIcon: Icon(Icons.person)
-                ),
+                    prefixIcon: Icon(Icons.person)),
               ),
               TextField(
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
                     labelText: "密码",
                     hintText: "您的登录密码",
-                    hintStyle: TextStyle(color: Colors.grey, fontSize: 13.0)
-                ),
+                    hintStyle: TextStyle(color: Colors.grey, fontSize: 13.0)),
                 obscureText: true,
               ),
-
-
               Container(
                 child: TextField(
                     keyboardType: TextInputType.emailAddress,
@@ -251,25 +217,18 @@ class _FocusTestState1 extends State<FocusTest1> {
                         hintText: "电子邮件地址",
                         prefixIcon: Icon(Icons.email),
                         border: InputBorder.none //隐藏获取焦点时的下划线
-                    )
-                ),
+                        )),
                 decoration: BoxDecoration(
-                  // 下滑线浅灰色，宽度1像素
-                    border: Border(bottom: BorderSide(color: Colors.grey[200], width: 1.0))
-                ),
+                    // 下滑线浅灰色，宽度1像素
+                    border: Border(
+                        bottom:
+                            BorderSide(color: Colors.grey[200], width: 1.0))),
               )
-
-
-
-
             ],
-          )
-      ),
+          )),
     );
   }
-
 }
-
 
 ///Form:
 
@@ -278,7 +237,7 @@ class _FocusTestState1 extends State<FocusTest1> {
    onChanged：Form的任意一个子FormField内容发生变化时会触发此回调。*/
 
 ///为了方便使用，Flutter提供了一个TextFormField,它继承自FormField类，也是TextField的一个包装类，所以除了FormField定义的属性之外，它还包括TextField的属性。
-  /*const FormField({
+/*const FormField({
   ...
   FormFieldSetter<T> onSaved, //保存回调
   FormFieldValidator<T>  validator, //验证回调
@@ -287,11 +246,11 @@ class _FocusTestState1 extends State<FocusTest1> {
   })*/
 
 ///FormState 为Form的State类 可以通过Form.of()或GlobalKey获得。我们可以通过它来对Form的子孙FormField进行统一操作
-  /*FormState.validate()：调用此方法后，会调用Form子孙FormField的validate回调，如果有一个校验失败，则返回false，所有校验失败项都会返回用户返回的错误提示。
+/*FormState.validate()：调用此方法后，会调用Form子孙FormField的validate回调，如果有一个校验失败，则返回false，所有校验失败项都会返回用户返回的错误提示。
     FormState.save()：调用此方法后，会调用Form子孙FormField的save回调，用于保存表单内容
     FormState.reset()：调用此方法后，会将子孙FormField的内容清空。*/
 
-  ///一个完整的登录校验案例:
+///一个完整的登录校验案例:
 ///用户名不能为空，如果为空则提示“用户名不能为空”。
 ///密码不能小于6位，如果小于6为则提示“密码不能少于6位”
 class FormTest extends StatefulWidget {
@@ -300,85 +259,97 @@ class FormTest extends StatefulWidget {
 }
 
 class _FormTestRouteState extends State<FormTest> {
-
-  TextEditingController _nameController=new TextEditingController();
-  TextEditingController _pwdController=new TextEditingController();
-  GlobalKey _formKey= new GlobalKey<FormState>();
+  TextEditingController _nameController = new TextEditingController();
+  TextEditingController _pwdController = new TextEditingController();
+  GlobalKey _formKey = new GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
-          child: Form(
-            key: _formKey, //设置globalKey，用于后面获取FormState
-            autovalidate: true,//开启自动校验
-            child: Column(
-              children: <Widget>[
-                TextFormField(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+        child: Form(
+          key: _formKey, //设置globalKey，用于后面获取FormState
+          autovalidate: true, //开启自动校验
+          child: Column(
+            children: <Widget>[
+              TextFormField(
                   autofocus: true, //获取默认焦点
                   controller: _nameController,
                   decoration: InputDecoration(
                       labelText: "用户名",
                       hintText: "用户名或邮箱",
-                      icon: Icon(Icons.person)
-                  ),
-                    // 校验用户名
-                    validator: (v) {
-                      return v.trim().length > 0 ? null : "用户名不能为空!";
-                    }
-                ),
+                      icon: Icon(Icons.person)),
+                  // 校验用户名
+                  validator: (v) {
+                    return v.trim().length > 0 ? null : "用户名不能为空!";
+                  }),
 
-                TextFormField(
-                    controller: _pwdController,
-                    decoration: InputDecoration(
-                        labelText: "密码",
-                        hintText: "输入登录密码",
-                        icon: Icon(Icons.lock)
-                    ),
-                    obscureText: true,
-                    //校验密码
-                    validator: (v) {
-                      return v.trim().length > 5 ? null : "密码不能少于6位哦~";
-                    }
-                ),
+              TextFormField(
+                  controller: _pwdController,
+                  decoration: InputDecoration(
+                      labelText: "密码",
+                      hintText: "输入登录密码",
+                      icon: Icon(Icons.lock)),
+                  obscureText: true,
+                  //校验密码
+                  validator: (v) {
+                    return v.trim().length > 5 ? null : "密码不能少于6位哦~";
+                  }),
 
-                /// 登录按钮
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: RaisedButton(
-                          padding: EdgeInsets.all(15.0),
-                          child: Text("登录"),
-                          color: Theme.of(context).primaryColor,
-                          textColor: Colors.white,
-                          onPressed: () {
-                            //在这里不能通过此方式获取FormState，context不对
-                            //print(Form.of(context));
+              /// 登录按钮
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: RaisedButton(
+                        padding: EdgeInsets.all(15.0),
+                        child: Text("登录"),
+                        color: Theme.of(context).primaryColor,
+                        textColor: Colors.white,
+                        onPressed: () {
+                          //在这里不能通过Form.of(context)方式获取FormState，context不对
+                          //不能通过Form.of(context)来获取，原因是，此处的context为FormTest的context，
+                          // 而Form.of(context)是根据所指定context向根去查找，而FormState是在FormTestRoute的子树中，所以不行
 
-                            // 通过_formKey.currentState 获取FormState后，
-                            // 调用validate()方法校验用户名密码是否合法，校验
-                            // 通过后再提交数据。
-                            if((_formKey.currentState as FormState).validate()){
+                          //print(Form.of(context));
 
-                              print("验证通过~~");
-                            }
-                          },
-                        ),
+                          // 通过_formKey.currentState 获取FormState后，
+                          // 调用validate()方法校验用户名密码是否合法，校验
+                          // 通过后再提交数据。
+                          if ((_formKey.currentState as FormState).validate()) {
+                            print("验证通过~~");
+                          }
+                        },
                       ),
-                    ],
-                  ),
-                )
+                    ),
 
 
-              ],
-            ),
+                    ///要正确的使用 Form.of(context) 正确的做法是通过Builder来构建登录按钮，Builder会将widget节点的context作为回调参数：
+                   /* Expanded(
+                        // 通过Builder来获取RaisedButton所在widget树的真正context(Element)
+                        child: Builder(builder: (context) {
+                      return RaisedButton(
+                        onPressed: () {
+                          //由于本widget也是Form的子代widget，所以可以通过下面方式获取FormState
+                          if (Form.of(context).validate()) {
+                            //验证通过提交数据
+                            print("验证通过！！！！");
+                          }
+                        },
+                      );
+                    }))*/
+
+
+                  ],
+                ),
+              )
+            ],
           ),
         ),
+      ),
     );
   }
-
 }
