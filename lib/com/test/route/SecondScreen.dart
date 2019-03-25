@@ -10,8 +10,11 @@ class SecondScreen extends StatelessWidget {
 
 
     return new Scaffold(
+
       appBar: new AppBar(
         title: new Text("第二个页面"),
+
+
       ),
       body: new Center(
         child: new RaisedButton(
