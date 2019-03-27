@@ -33,6 +33,8 @@ class Contet extends StatelessWidget{
         children: <Widget>[
           PointerTest(),
           _PointerTestState1(),
+          _PointerTestState2(),
+          _PointerTestState3(),
         ],
       ),
     );
@@ -91,16 +93,20 @@ class _PointerTestState extends State<PointerTest>{
 
 }
 
-///behavior属性，它决定子Widget如何响应命中测试，它的值类型为HitTestBehavior，这是一个枚举类，有三个枚举值：
-//deferToChild：子widget会一个接一个的进行命中测试，如果子Widget中有测试通过的，则当前Widget通过，这就意味着，如果指针事件作用于子Widget上时
+//behavior属性，它决定子Widget如何响应命中测试，它的值类型为HitTestBehavior，这是一个枚举类，有三个枚举值：
+///deferToChild：子widget会一个接一个的进行命中测试，如果子Widget中有测试通过的，则当前Widget通过，这就意味着，如果指针事件作用于子Widget上时
 // ，其父(祖先)Widget也肯定可以收到该事件。
 
-//opaque：在命中测试时，将当前Widget当成不透明处理(即使本身是透明的)，最终的效果相当于当前Widget的整个区域都是点击区域。例如：：
+///opaque：在命中测试时，将当前Widget当成不透明处理(即使本身是透明的)，最终的效果相当于当前Widget的整个区域都是点击区域。例如：：
 
 
 class _PointerTestState1 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+
+//    本例中，默认deferToChild 只有点击文本内容区域才会触发点击事件，因为 deferToChild 会去子widget判断是否命中测试，而该例中子widget就是 Text("Box A") 。
+//    如果我们想让整个300×150的矩形区域都能点击我们可以将behavior设为HitTestBehavior.opaque
+  //注意，该属性并不能用于在Widget树中拦截（忽略）事件，它只是决定命中测试时的Widget大小。
     return Listener(
         child: ConstrainedBox(
           constraints: BoxConstraints.tight(Size(300.0, 150.0)),
@@ -114,3 +120,66 @@ class _PointerTestState1 extends StatelessWidget{
 
 }
 
+///translucent：当点击Widget透明区域时，可以对自身边界内及底部可视区域都进行命中测试，这意味着点击顶部widget透明区域时，顶部widget和底部widget都可以接收到事件，例如：
+
+class _PointerTestState2 extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+
+//    上例中，当注释掉最后一行代码后，在左上角200*100范围内非文本区域点击时（顶部Widget透明区域），控制台只会打印“down0”，
+//    也就是说 顶部widget没有接收到事件，而只有底部接收到了。当放开注释后，再点击时顶部和底部都会接收到事件，此时会打印：“down0” “down1”
+  //如果behavior值改为HitTestBehavior.opaque，则只会打印"down1"。
+    return Stack(
+      children: <Widget>[
+        Listener(
+          child: ConstrainedBox(
+            constraints: BoxConstraints.tight(Size(300.0, 200.0)),
+            child: DecoratedBox(
+                decoration: BoxDecoration(color: Colors.blue)),
+          ),
+          onPointerDown: (event) => print("down0"),
+        ),
+        Listener(
+          child: ConstrainedBox(
+            constraints: BoxConstraints.tight(Size(200.0, 100.0)),
+            child: Center(child: Text("左上角200*100范围内非文本区域点击")),
+          ),
+          onPointerDown: (event) => print("down1"),
+         // behavior: HitTestBehavior.translucent, //放开此行注释后可以"点透"
+        )
+      ],
+    );
+
+  }
+}
+
+///忽略PointerEvent
+/*
+假如我们不想让某个子树响应PointerEvent的话，我们可以使用IgnorePointer和AbsorbPointer，这两个Widget都能阻止子树接收指针事件，
+不同之处在于AbsorbPointer本身会参与命中测试，而IgnorePointer本身不会参与，这就意味着AbsorbPointer本身是可以
+接收指针事件的(但其子树不行)，而IgnorePointer不可以。一个简单的例子如下：*/
+
+class _PointerTestState3 extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+/*
+    点击Container时，由于它在AbsorbPointer的子树上，所以不会响应指针事件，所以日志不会输出"in"，
+    但AbsorbPointer本身是可以接收指针事件的，所以会输出"up"。如果将AbsorbPointer换成IgnorePointer，那么两个都不会输出*/
+
+    return Listener(
+      child: AbsorbPointer(
+        child: Listener(
+          child: Container(
+            color: Colors.red,
+            width: 200.0,
+            height: 50.0,
+          ),
+          onPointerDown: (event)=>print("in"),
+        ),
+      ),
+      onPointerDown: (event)=>print("up"),
+    );
+
+  }
+
+}

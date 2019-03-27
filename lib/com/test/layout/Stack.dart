@@ -15,7 +15,8 @@ class MyStackContnet extends StatelessWidget {
       appBar: new AppBar(
         title: new Text('层叠布局Stack--类似于FrameLayout'),
       ),
-      body: _buildContnet(),
+     // body: _buildContnet(),
+      body: _buildContnet2(),
     );
   }
 
@@ -95,7 +96,7 @@ class MyStackContnet extends StatelessWidget {
     return ConstrainedBox(
 
     //可以看到，由于第二个子widget没有定位，所以fit属性会对它起作用，就会占满Stack。
-      //Stack层叠显示 所以效果就是：文本1 2 显示了   文本1 被文本2控件 遮住
+      //Stack层叠显示 所以效果就是：文本2 3  显示了   文本1 被文本2控件 遮住
 
       constraints: BoxConstraints.expand(),
       child: Stack(
