@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+
 class SecondScreen extends StatelessWidget {
 
 
@@ -17,10 +19,14 @@ class SecondScreen extends StatelessWidget {
 
       ),
       body: new Center(
+
         child: new RaisedButton(
           onPressed: () {
             //Navigator.pop(context);
-            Navigator.pop(context,"不需要");
+            // Navigator.pop(context,"不需要");
+
+            msg!=null?Navigator.pop(context,"不需要"):Navigator.pop(context);
+
           },
           child: new Text('传过来的值:$msg'),
         ),

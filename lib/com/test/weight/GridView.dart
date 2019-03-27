@@ -40,6 +40,7 @@ class MyContnet extends StatelessWidget {
 
 Widget _addContent() {
   return  GridView(
+
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3, //横轴三个子widget
               childAspectRatio: 1.0 //宽高比为1时，子widget
