@@ -87,7 +87,6 @@ class _HttpTestState extends State<HttpTest>{
   }
 
   _tsetJson(){
-
     setState(() {
       _testJson=new Values(1,"11","老司机开车啦").toJsons();
     });
