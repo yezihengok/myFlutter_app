@@ -4,7 +4,6 @@ class Values{
   var keyWord;
 
   Values(this.pageNum, this.pageSize, this.keyWord);
-
 //  一个User.fromJson 构造函数, 用于从一个map构造出一个 User实例 map structure
 //  一个toJson 方法, 将 User 实例转化为一个map.
   Values.fromJson(Map<String, dynamic> json)
