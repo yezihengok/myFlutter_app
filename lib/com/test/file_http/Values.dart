@@ -11,6 +11,7 @@ class Values{
         keyWord = json['keyWord'],
         pageSize = json['pageSize'];
 
+
   ///返回一个 map
   Map<String, dynamic> toJson() =>
       <String, dynamic>{
