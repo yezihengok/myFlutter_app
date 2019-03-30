@@ -38,7 +38,7 @@ class SecondRoute extends StatelessWidget {
               RaisedButton(
                 onPressed: () {
                   //点击后后触发订阅的登录事件，页面A中订阅者会被调用
-                  UserInfo user=new UserInfo(_userInfo.name+"_update", _userInfo.pwd+"_update");//修改一下内容在丢给订阅者
+                  UserInfo user=new UserInfo(_userInfo.username+"_update", _userInfo.password+"_update");//修改一下内容在丢给订阅者
                   mBus.emit("login", user);
                 },
                 child: new Text('点我登录界面订阅的事件会执行',

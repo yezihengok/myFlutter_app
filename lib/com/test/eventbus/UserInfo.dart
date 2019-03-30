@@ -1,12 +1,12 @@
 class UserInfo{
-  var name;
-  var pwd;
+  var username;
+  var password;
 
-  UserInfo(this.name, this.pwd);
+  UserInfo(this.username, this.password);
 
   @override
   String toString() {
-    return 'UserInfo{name: $name, pwd: $pwd}';
+    return '{name: $username, pwd: $password}';
   }
 
 

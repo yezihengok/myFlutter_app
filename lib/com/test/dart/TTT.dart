@@ -131,8 +131,8 @@ void enableFlags({bool bold = false, bool hidden = false}) {
     for (var i = 0; i < 2; i++) {
       callbacks.add(() => print(i));
     }
-    // ignore: expected_token
-    callbacks.forEach((c) => c());
+
+    callbacks.forEach((c) => print('I drink $c'));
   }
 
 
