@@ -14,7 +14,7 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: '测试页面跳转与传值',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
