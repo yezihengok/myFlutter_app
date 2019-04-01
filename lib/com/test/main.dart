@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:myflutter_app/com/test/route/MainRoute.dart';
 
 //main函数使用了(=>)符号, 这是Dart中单行函数或方法的简写。
-void main() => runApp(MainRoute());
+void main() => runApp(
+  //  debugPaintSizeEnabled = true;      //打开视觉调试开关
+    MainRoute());
 
 /*void main(){
   runApp(new MainDart());

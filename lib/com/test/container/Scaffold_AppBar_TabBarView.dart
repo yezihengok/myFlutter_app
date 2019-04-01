@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:myflutter_app/com/test/route/TextPage.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -29,20 +31,21 @@ class MyContnet extends StatelessWidget {
       appBar: new AppBar(
       //  title: new Text('Container'),
       ),
-      body: new ScaffoldRoute(),
+      body: new ScaffoldTabRoute(),
     );
   }
 }
 
 
 
-class ScaffoldRoute extends StatefulWidget {
+class ScaffoldTabRoute extends StatefulWidget {
   @override
  // _ScaffoldRouteState createState() => _ScaffoldRouteState();
   _ScaffoldRouteState2 createState() => _ScaffoldRouteState2();
 }
 
-class _ScaffoldRouteState extends State<ScaffoldRoute> {
+//底部tab
+class _ScaffoldRouteState extends State<ScaffoldTabRoute> {
   int _selectedIndex = 1;
 
   @override
@@ -65,6 +68,7 @@ class _ScaffoldRouteState extends State<ScaffoldRoute> {
         currentIndex: _selectedIndex,
         fixedColor: Colors.blue,
         onTap: _onItemTapped,
+
       ),
       floatingActionButton: FloatingActionButton( //悬浮按钮
           child: Icon(Icons.add),
@@ -141,7 +145,7 @@ class MyDrawer extends StatelessWidget {
 //---------------
 
 ///---
-class _ScaffoldRouteState2 extends State<ScaffoldRoute>with SingleTickerProviderStateMixin {
+class _ScaffoldRouteState2 extends State<ScaffoldTabRoute>with SingleTickerProviderStateMixin {
 
   TabController _tabController; //需要定义一个Controller
   List tabs = ["新闻", "历史", "图片"];
@@ -151,6 +155,23 @@ class _ScaffoldRouteState2 extends State<ScaffoldRoute>with SingleTickerProvider
     super.initState();
     // 创建Controller 它是用于控制/监听Tab菜单切换
     _tabController = TabController(length: tabs.length, vsync: this);
+
+    _tabController.addListener((){
+      switch(_tabController.index){
+        case 0:
+          Fluttertoast.showToast(msg:"监听到页面切换0");
+          break;
+
+        case 1:
+          Fluttertoast.showToast(msg:"监听到页面切换1");
+          break;
+
+        case 2:
+          Fluttertoast.showToast(msg:"监听到页面切换2");
+          break;
+      }
+      });
+
   }
 
   @override
@@ -160,6 +181,7 @@ class _ScaffoldRouteState2 extends State<ScaffoldRoute>with SingleTickerProvider
         //... //省略无关代码
         bottom: TabBar(
             controller: _tabController,
+            indicatorColor: Colors.lightGreenAccent,
             tabs: tabs.map((t) => Tab(text: t)).toList()),
 
 /*          Tab({
@@ -170,14 +192,11 @@ class _ScaffoldRouteState2 extends State<ScaffoldRoute>with SingleTickerProvider
           })*/
       ),
       drawer: new MyDrawer(),
-      //Material库提供了一个TabBarView组件
+      //Material库提供了一个TabBarView组件 ，它可以很轻松的配合TabBar来实现同步切换和滑动状态同步 TabBar指示器的偏移
       body: TabBarView(
         controller: _tabController,
         children: tabs.map((e) { //创建3个Tab页
-          return Container(
-            alignment: Alignment.center,
-            child: Text(e, textScaleFactor: 3),
-          );
+          return new TextPage(msg:"页面${tabs[_tabController.index]}");
         }).toList(),
       ),
 

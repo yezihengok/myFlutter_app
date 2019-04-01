@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-class MainPage extends StatelessWidget {
+class TextPage extends StatelessWidget {
 
   final msg;
-  const MainPage({Key key, this.msg}) : super(key: key);
+  const TextPage({Key key, this.msg}) : super(key: key);
   @override
   Widget build(BuildContext context) {
 

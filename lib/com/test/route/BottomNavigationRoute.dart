@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:myflutter_app/com/test/route/MainPage.dart';
-import 'package:myflutter_app/com/utils/ToastUtils.dart';
+import 'package:myflutter_app/com/test/route/TextPage.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 class BottomNavigationRoute extends StatefulWidget{
   _BottomNavigationRouteState createState() => new _BottomNavigationRouteState();
 }
 
 //Tab页的切换搭配了动画，因此到State类上附加一个 StateMixin: SingleTickerProviderStateMixin
-class _BottomNavigationRouteState  extends State<BottomNavigationRoute>{
+class _BottomNavigationRouteState  extends State<BottomNavigationRoute> with SingleTickerProviderStateMixin{
   //默认索引
   int positionIndex = 0;
   //底部导航栏
@@ -35,14 +35,14 @@ class _BottomNavigationRouteState  extends State<BottomNavigationRoute>{
           new IconButton(
               icon: new Icon(Icons.search),
               onPressed: () {
-                ToastUtils.showToast("什么也没有");
+                Fluttertoast.showToast(msg:"什么也没有");
               }),
         ],
       ),
 
       //切换的页面
       body: IndexedStack(
-        children: <Widget>[new MainPage(msg:"第1页"), new MainPage(msg:"第2页"),new MainPage(msg:"第3页")],
+        children: <Widget>[new TextPage(msg:"第1页"), new TextPage(msg:"第2页"),new TextPage(msg:"第3页")],
         index: positionIndex,
       ),
 
