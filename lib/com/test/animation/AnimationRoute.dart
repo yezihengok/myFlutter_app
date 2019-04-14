@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:myflutter_app/com/test/animation/ScaleAnimationRoute.dart';
 
 class AnimationRoute extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _AnimationRouteState extends State<AnimationRoute> {
                 textColor: Colors.black,
                 child: new Text('ScaleAnimationRoute '),
                 onPressed: () {
-
+                  Navigator.push(context, new MaterialPageRoute(builder: (context) => new ScaleAnimationRoute()));
                 }),
           ),
 
