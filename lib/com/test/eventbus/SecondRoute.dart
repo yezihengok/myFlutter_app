@@ -21,7 +21,6 @@ class SecondRoute extends StatelessWidget {
       appBar: new AppBar(
         title: new Text("第二个页面"),
 
-
       ),
       body: new Center(
           child: Column(

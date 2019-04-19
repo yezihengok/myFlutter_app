@@ -94,7 +94,6 @@ class _FormTestRouteState extends State<FormTest> {
                             print("验证通过~~");
 
 
-
                             ///监听订阅登录事件    (其他路由 调用 mBus.emit("login", user)会执行)
                             mBus.on("login", (arg) {
 
