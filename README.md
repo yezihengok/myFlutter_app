@@ -25,8 +25,9 @@ Flutter 是 Google推出并开源的移动应用开发框架，主打跨平台�
 
 
 * ###截图：
-![myFlutter_app](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_1.png)
-![myFlutter_app](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_2.png)
+![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_2.png)
+![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_1.png)
+
 
 ## Getting Started
 
