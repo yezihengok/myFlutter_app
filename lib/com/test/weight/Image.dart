@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(new MaterialApp(
     title: 'My app',
-    home: new MyAppContnet(),
+    home: new MyImgContnet(),
   ));
 
   //runApp(new MyAppContnet());
 }
 
-class MyAppContnet extends StatelessWidget {
-  MyAppContnet({this.title});
+class MyImgContnet extends StatelessWidget {
+  MyImgContnet({this.title});
 
   // Widget子类中的字段往往都会定义为"final"
 

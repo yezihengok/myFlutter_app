@@ -12,18 +12,18 @@ void main() {
       ),
       //   body: ScrollControllerTestRoute(),
 
-      body: HttpTest(),
+      body: HttpRoute(),
     ),
   ));
 }
 
 const  String BaseUrl = "http://www.wanandroid.com/";
 
-class HttpTest extends StatefulWidget {
+class HttpRoute extends StatefulWidget {
   @override
   _HttpTestState createState() => new _HttpTestState();
 }
-class _HttpTestState extends State<HttpTest>{
+class _HttpTestState extends State<HttpRoute>{
   String _msg="";
   String _login="";
   String _testJson="";
