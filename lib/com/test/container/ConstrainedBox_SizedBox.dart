@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(new MaterialApp(
     title: '标题',
-    home: new MyContnet(),
+    home: new MyConstrainedBoxContnet(),
   ));
 }
 //ConstrainedBox和SizedBox都是通过RenderConstrainedBox来渲染的。SizedBox只是ConstrainedBox一个定制
 
-class MyContnet extends StatelessWidget {
+class MyConstrainedBoxContnet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

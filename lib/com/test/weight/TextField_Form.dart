@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(new MaterialApp(
     title: '标题',
-    home: new MyContnet(),
+    home: new TextField_Form(),
   ));
 }
 
-class MyContnet extends StatelessWidget {
+class TextField_Form extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:myflutter_app/com/test/animation/AnimationRoute.dart';
+import 'package:myflutter_app/com/test/container/ConstrainedBox_SizedBox.dart';
 import 'package:myflutter_app/com/test/container/Scaffold_AppBar_TabBarView.dart';
+import 'package:myflutter_app/com/test/file_http/HttpRoute.dart';
+import 'package:myflutter_app/com/test/layout/Stack.dart';
 import 'package:myflutter_app/com/test/route/BottomNavigationRoute.dart';
 import 'package:myflutter_app/com/test/route/DataRoute.dart';
 import 'package:myflutter_app/com/test/route/FirstScreen.dart';
 import 'package:myflutter_app/com/test/route/VisibleRoute.dart';
+import 'package:myflutter_app/com/test/weight/Image.dart';
 import 'package:myflutter_app/com/test/weight/ListViewRoute.dart';
+import 'package:myflutter_app/com/test/weight/TextField_Form.dart';
 class MainRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -44,6 +49,29 @@ class _MainRouteState extends State<MainRouteContent>{
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
+
+
+
+                RaisedButton(
+                  child: Text("基本控件weight（更多控件在weight包下,每个dart文件可以单独运行）"),
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new MyImgContnet()));
+                  },
+                ),
+
+                RaisedButton(
+                  child: Text("布局layout（更多参见layout包下）"),
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new MyStackContnet()));
+                  },
+                ),
+                RaisedButton(
+                  child: Text("容器类Widget（更多参见container包下）"),
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new MyConstrainedBoxContnet()));
+                  },
+                ),
+
                 new Padding(
                   padding: const EdgeInsets.only(left: 10.0, top: 5, right: 10.0),
                   child: RaisedButton(
@@ -54,6 +82,14 @@ class _MainRouteState extends State<MainRouteContent>{
                       },
                     ),
                 ),
+
+                RaisedButton(
+                  child: Text("输入框and表单"),
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new TextField_Form()));
+                  },
+                ),
+
 
                 RaisedButton(
                   child: Text("底部选项卡页面切换"),
@@ -90,11 +126,16 @@ class _MainRouteState extends State<MainRouteContent>{
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new ListViewRoute()));
                   },
                 ),
-
                 RaisedButton(
                   child: Text("动画Animation"),
                   onPressed: (){
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new AnimationRoute()));
+                  },
+                ),
+                RaisedButton(
+                  child: Text("http(dio)请求接口"),
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new HttpRoute()));
                   },
                 ),
 
@@ -108,5 +149,6 @@ class _MainRouteState extends State<MainRouteContent>{
   }
 
 }
+
 
 
