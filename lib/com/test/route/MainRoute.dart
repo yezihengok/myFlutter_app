@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myflutter_app/com/test/animation/AnimationRoute.dart';
 import 'package:myflutter_app/com/test/container/ConstrainedBox_SizedBox.dart';
 import 'package:myflutter_app/com/test/container/Scaffold_AppBar_TabBarView.dart';
+import 'package:myflutter_app/com/test/eventbus/LoginRoute.dart';
 import 'package:myflutter_app/com/test/file_http/HttpRoute.dart';
 import 'package:myflutter_app/com/test/layout/Stack.dart';
 import 'package:myflutter_app/com/test/route/BottomNavigationRoute.dart';
@@ -136,6 +137,13 @@ class _MainRouteState extends State<MainRouteContent>{
                   child: Text("http(dio)请求接口"),
                   onPressed: (){
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new HttpRoute()));
+                  },
+                ),
+
+                RaisedButton(
+                  child: Text("订阅&回调"),
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new LoginRoute()));
                   },
                 ),
 

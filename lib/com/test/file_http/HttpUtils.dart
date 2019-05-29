@@ -66,7 +66,6 @@ class HttpUtils {
    void postHttp(String url,arg,Function callback) async {
 
      Values info=arg as Values;
-
     try {
       //这个接口实际需要用get才会正确返回数据，这里我演示post 用法。会返回一个错误的json
       Response  response=await dio.post(url,data:info.toJson());
