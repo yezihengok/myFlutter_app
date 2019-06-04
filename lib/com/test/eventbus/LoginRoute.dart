@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myflutter_app/com/test/eventbus/EventBus.dart';
 import 'package:myflutter_app/com/test/eventbus/SecondRoute.dart';
-import 'package:myflutter_app/com/test/eventbus/UserInfo.dart';
+import 'package:myflutter_app/com/test/bean/UserInfo.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -83,26 +83,20 @@ class _FormTestRouteState extends State<FormTest> {
                           //在这里不能通过Form.of(context)方式获取FormState，context不对
                           //不能通过Form.of(context)来获取，原因是，此处的context为FormTest的context，
                           // 而Form.of(context)是根据所指定context向根去查找，而FormState是在FormTestRoute的子树中，所以不行
-
                           //print(Form.of(context));
-
                           // 通过_formKey.currentState 获取FormState后，
                           // 调用validate()方法校验用户名密码是否合法，校验
                           // 通过后再提交数据。
                           if ((_formKey.currentState as FormState).validate()) {
-
                             print("验证通过~~");
-
 
                             ///监听订阅登录事件    (其他路由 调用 mBus.emit("login", user)会执行)
                             mBus.on("login", (arg) {
-
                               //tips: arg 泛型  as等同于强转为 UserInfo类型
                               var msg=(arg as UserInfo).toString();
 
                               print("登录界面订阅的事件执行了:$msg");
                             });
-
 
                             UserInfo info=new UserInfo(_nameController.text, _pwdController.text);
                             Navigator.push(context, new MaterialPageRoute(builder: (context) => new SecondRoute(info)));
@@ -126,7 +120,6 @@ class _FormTestRouteState extends State<FormTest> {
                         },
                       );
                     }))*/
-
 
                   ],
                 ),

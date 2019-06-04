@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:myflutter_app/com/test/file_http/HttpUtils.dart';
-import 'package:myflutter_app/com/test/file_http/Values.dart';
+import 'package:myflutter_app/com/test/bean/Values.dart';
 
 void main() {
   runApp(new MaterialApp(

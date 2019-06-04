@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:myflutter_app/com/test/eventbus/UserInfo.dart';
-import 'package:myflutter_app/com/test/file_http/Values.dart';
+import 'package:myflutter_app/com/test/bean/UserInfo.dart';
+import 'package:myflutter_app/com/test/bean/Values.dart';
 
 
 ///dio是一个强大的Dart Http请求库(dio内部使用HttpClient)，支持Restful API、FormData、拦截器、请求取消、Cookie管理、文件上传/下载、超时等。

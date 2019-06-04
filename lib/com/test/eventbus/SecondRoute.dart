@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myflutter_app/com/test/eventbus/EventBus.dart';
-import 'package:myflutter_app/com/test/eventbus/UserInfo.dart';
+import 'package:myflutter_app/com/test/bean/UserInfo.dart';
 
 class SecondRoute extends StatelessWidget {
 

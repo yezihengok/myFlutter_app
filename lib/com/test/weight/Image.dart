@@ -90,6 +90,18 @@ class MyImgContnet extends StatelessWidget {
               image: new NetworkImage(
                   'https://avatars1.githubusercontent.com/u/17289342?s=460&v=4')),
 
+//          return new CachedNetworkImage(
+//          imageUrl: image_url,
+//          //占位符
+//          placeholder: new CircularProgressIndicator(),
+//          //加载错误时显示的图片
+//          errorWidget: new Icon(Icons.error),
+//          //宽高
+//          width:200,
+//          height: 200,
+//          ),
+
+
         ],
       ),
     );

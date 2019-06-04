@@ -8,6 +8,8 @@ import 'package:myflutter_app/com/test/layout/Stack.dart';
 import 'package:myflutter_app/com/test/route/BottomNavigationRoute.dart';
 import 'package:myflutter_app/com/test/route/DataRoute.dart';
 import 'package:myflutter_app/com/test/route/FirstScreen.dart';
+import 'package:myflutter_app/com/test/route/LayoutExampleRoute.dart';
+import 'package:myflutter_app/com/test/route/layout_example/TestLayoutRoute.dart';
 import 'package:myflutter_app/com/test/route/VisibleRoute.dart';
 import 'package:myflutter_app/com/test/weight/Image.dart';
 import 'package:myflutter_app/com/test/weight/ListViewRoute.dart';
@@ -127,6 +129,15 @@ class _MainRouteState extends State<MainRouteContent>{
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new ListViewRoute()));
                   },
                 ),
+
+
+                RaisedButton(
+                  child: Text("布局练手例子~"),
+                  onPressed: (){
+                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new LayoutExampleRoute()));
+                  },
+                ),
+
                 RaisedButton(
                   child: Text("动画Animation"),
                   onPressed: (){
@@ -146,6 +157,7 @@ class _MainRouteState extends State<MainRouteContent>{
                     Navigator.push(context, new MaterialPageRoute(builder: (context) => new LoginRoute()));
                   },
                 ),
+
 
               ],
             ),

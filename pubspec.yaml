@@ -28,6 +28,8 @@ dependencies:
   fluttertoast: ^3.0.1
   shared_preferences: ^0.4.2
   sqflite: ^0.12.0
+  #cached_network_image: ^0.8.0
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
 
@@ -46,9 +48,13 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-  assets:
-  - images/icon_mine_user.png
-  - images/img1.png
-  - images/img2.png
-  - images/img3.png
 
+#  assets:
+#  - images/icon_mine_user.png
+#  - images/img1.png
+#  - images/img2.png
+#  - images/img3.png
+
+ # 要包含asset文件下面的所有资源，直接用下面这样方法，这样的话，只在这个目录里的文件会被包含进来。
+  assets:
+    - images/
