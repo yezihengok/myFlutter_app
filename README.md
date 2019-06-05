@@ -25,10 +25,14 @@ Flutter 是 Google推出并开源的移动应用开发框架，主打跨平台�
 布局类Widget是按照一定的排列方式来对其子Widget进行排列；而容器类Widget一般只是包装其子Widget，对其添加一些修饰（补白或背景色等）、变换(旋转或剪裁等)、或限制(大小等)。
 
 
-* ###截图：
-![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_2.png)
+* ### [基本的上拉下拉加载listview]：
+![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_0.png)
+
+*### [截图1]：
 ![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_1.png)
 
+* ###[代码注释截图]：
+![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_2.png)
 
 ## Getting Started
 
