@@ -17,7 +17,7 @@ Flutter 是 Google推出并开源的移动应用开发框架，主打跨平台�
 * com.test.weight                       ---图片、按钮、列表等基本控件使用
 
 
-**-----Tips：**
+##  -----Tips：
 *容器类Widget container
 
 容器类Widget和布局类Widget都作用于其子Widget，不同的是：
@@ -27,9 +27,9 @@ Flutter 是 Google推出并开源的移动应用开发框架，主打跨平台�
 ##
 
 * ### [基本的上拉下拉加载listview]：
-![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_0.png)
+![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_0.gif)
 
-*### [截图1]：
+* ### [截图1]：
 ![Doutu-master](https://github.com/yezihengok/myFlutter_app/blob/master/screenshots/device_1.png)
 
 * ###[代码注释截图]：
