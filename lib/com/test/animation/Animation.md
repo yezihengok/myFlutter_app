@@ -1,12 +1,12 @@
 
 
-###Flutter中动画抽象
+### Flutter中动画抽象
 
 为了方便开发者创建动画，不同的UI系统对动画都进行了一些抽象，比如在Android中可以通过XML来描述一个动画然后设置给View。Flutter中也对动画进行了抽象，
     主要涉及Tween、Animation、Curve、Controller这些角色。
 
 
-###Animation
+### Animation
 
 Animation对象本身和UI渲染没有任何关系。Animation是一个抽象类，它用于保存动画的插值和状态；其中一个比较常用的Animation类是Animation。Animation对象
 是一个在一段时间内依次生成一个区间(Tween)之间值的类。Animation对象的输出值可以是线性的、曲线的、一个步进函数或者任何其他曲线函数。 根据Animation对象
@@ -15,7 +15,7 @@ Animation对象本身和UI渲染没有任何关系。Animation是一个抽象类
 
 
 
-##动画通知
+## 动画通知
 
 我们可以通过Animation来监听动画的帧和状态变化：
 
@@ -25,7 +25,7 @@ addStatusListener()可以给Animation添加“动画状态改变”监听器；�
 
 
 
-###Curve
+### Curve
 
 动画过程可以是匀速的、加速的或者先加速后减速等。Flutter中通过Curve（曲线）来描述动画过程，Curve可以是线性的(Curves.linear)，也可以是非线性的。
 
@@ -42,7 +42,7 @@ class ShakeCurve extends Curve {
 }
 CurvedAnimation和AnimationController（下面介绍）都是Animation类型。CurvedAnimation可以通过包装AnimationController和Curve生成一个新的动画对象 。
 
----AnimationController
+### ---AnimationController
 
 AnimationController用于控制动画，它包含动画的启动forward()、停止stop() 、反向播放 reverse()等方法。AnimationController会在动画的每一帧，就会生成一个新的值。默认情况下，AnimationController在给定的时间段内线性的生成从0.0到1.0（默认区间）的数字。 例如，下面代码创建一个Animation对象，但不会启动它运行：
 
@@ -78,7 +78,7 @@ Flutter应用在启动时都会绑定一个SchedulerBinding，通过SchedulerBin
 
 
 
-###Tween
+### Tween
 
 默认情况下，AnimationController对象值的范围是0.0到1.0。如果我们需要不同的范围或不同的数据类型，则可以使用Tween来配置动画以生成不同的范围或数据类型的值。例如，像下面示例，Tween生成从-200.0到0.0的值：
 
@@ -91,7 +91,7 @@ final Tween colorTween =
 new ColorTween(begin: Colors.transparent, end: Colors.black54);
 Tween对象不存储任何状态，相反，它提供了evaluate(Animation<double> animation)方法，它可以获取动画当前值。 Animation对象的当前值可以通过value()方法取到。evaluate函数还执行一些其它处理，例如分别确保在动画值为0.0和1.0时返回开始和结束状态。
 
-Tween.animate
+### Tween.animate
 
 要使用Tween对象，需要调用其animate()方法，然后传入一个控制器对象。例如，以下代码在500毫秒内生成从0到255的整数值。
 
