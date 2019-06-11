@@ -20,7 +20,6 @@ Animation对象本身和UI渲染没有任何关系。Animation是一个抽象类
 我们可以通过Animation来监听动画的帧和状态变化：
 
 addListener()可以给Animation添加帧监听器，在每一帧都会被调用。帧监听器中最常见的行为是改变状态后调用setState()来触发UI重建。
-
 addStatusListener()可以给Animation添加“动画状态改变”监听器；动画开始、结束、正向或反向（见AnimationStatus定义）时会调用StatusListener。
 
 
