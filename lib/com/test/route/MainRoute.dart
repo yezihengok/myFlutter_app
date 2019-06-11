@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myflutter_app/com/test/animation/AnimationRoute.dart';
 import 'package:myflutter_app/com/test/container/ConstrainedBox_SizedBox.dart';
@@ -141,7 +142,10 @@ class _MainRouteState extends State<MainRouteContent>{
                 RaisedButton(
                   child: Text("动画Animation"),
                   onPressed: (){
-                    Navigator.push(context, new MaterialPageRoute(builder: (context) => new AnimationRoute()));
+
+                    //Material库中提供了一个MaterialPageRoute，它可以使用和平台风格一致的路由切换动画，如在iOS上会左右滑动切换，而在Android上会上下滑动切换
+                    //如果在Android上也想使用左右切换风格，可以直接使用CupertinoPageRoute, 如：
+                    Navigator.push(context, new CupertinoPageRoute(builder: (context) => new AnimationRoute()));
                   },
                 ),
                 RaisedButton(
