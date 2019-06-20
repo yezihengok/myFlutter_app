@@ -63,7 +63,7 @@ duration表示动画执行的时长，通过它我们可以控制动画的速度
 
 
 
-###Ticker
+### Ticker
 
 当创建一个AnimationController时，需要传递一个vsync参数，它接收一个TickerProvider类型的对象，它的主要职责是创建Ticker，定义如下：
 
@@ -77,7 +77,7 @@ Flutter应用在启动时都会绑定一个SchedulerBinding，通过SchedulerBin
 
 
 
-### Tween
+## Tween
 
 默认情况下，AnimationController对象值的范围是0.0到1.0。如果我们需要不同的范围或不同的数据类型，则可以使用Tween来配置动画以生成不同的范围或数据类型的值。例如，像下面示例，Tween生成从-200.0到0.0的值：
 
